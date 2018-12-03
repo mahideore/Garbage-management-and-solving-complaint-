@@ -1,0 +1,59 @@
+<html>
+        <head>
+        <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        </style>
+        </head>
+        <body>
+            <form action="/profile999/" method="post">{% csrf_token %}
+                    
+            
+            <h2>Hello {{user}} your electric type complaints status here </h2>
+            <p>(Note:- Dont worry Your complaint allready assign to specific worker.This time your complaint status is INPROGRESS )</p> 
+            </form>
+        
+        <table>
+          <tr>
+            <th>USER COMPLAINT ID</th>  
+            <th>USER NAME</th> 
+            <th>USER COMPLAINT</th>
+            <th>USER CONTACT</th>
+            <th>USER LOCATION</th>
+            <th>USER COMPLAINT STATUS</th>
+            
+          </tr>
+          {% for i in dt %}
+          <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.user}}</td>
+            <td>{{i.user_complaint}}</td>
+            <td>{{i.user_Mobile_number}}</td>
+            <td>{{i.user_location}}</td>
+            <td>INPROGRESS</td>
+            
+        
+            
+            
+          </tr>
+          {% endfor %}
+        </table>
+        <h2> So,{{user}} you see  your complaint status .If any problem occur then please contact to admin123@gmail.com this adminside</h2>
+        <h3>-Thank you</h3>
+    
+        
+        </body>
+        </html>

@@ -1,0 +1,144 @@
+<html>
+    <head>
+    <style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    td, th {
+        border: 1px solid #F0E68C;
+        text-align: left;
+        padding: 8px;
+        border-radius: 20px;
+    }
+    
+    tr:nth-child(even) {
+        background-color:rgb(144, 198, 199);
+    }
+    tr:nth-child(odd) {
+        background-color:rgb(165, 146, 172);
+    }
+    button {
+            background-color:orange;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 10%;
+            border-radius: 12px;
+        }
+        input[type=text], input[type=password], input[type=email], input[type=number] {
+            width: 20%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 3px solid rgb(145, 227, 241);
+            box-sizing: border-box;
+            border-radius: 25px;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color:red;
+            color:black;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 10%;
+            border-radius: 12px;
+        }
+
+        /* Float cancel and signup buttons and add an equal width */
+        .signupbtn {
+            float: left;
+            width: 50%;
+        }
+
+        /* Add padding to container elements */
+        .container {
+            padding: 16px;
+        }
+
+        /* Clear floats */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Change styles for cancel button and signup button on extra small screens */
+        @media screen and (max-width: 300px) {
+            .signupbtn {
+                width: 100%;
+            }
+        }
+        a:link, a:visited {
+    /*background-color: #fa7279;*/
+    color:black;
+    
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+
+
+    </style>
+    </head>
+    <body style="background-color:#F0E68C;">
+    <form action="/profile222/" method="post">{% csrf_token %}
+                
+        <h3 style="margin-left:1070px;"><label>COMPLAINT ID</label></h3>
+        <input type="text" name="id" placeholder="Enter your wifi complaint id here" style="margin-left:1020px;" size="30%" height="20%">
+        <input class="waves-effect waves-light btn" style="margin-left:1060px;class = button;border-radius: 15px;" type="submit" value="COMPLAINT COMPLETE" onclick="alert('OKAY')"> <a href="/profile222/"></a>
+        
+    <div style="margin-top:-120px;">
+        <h1 style="font-style: oblique;">WELCOME!!!! {{user}} </h1>
+        <h2>Hello {{user}} your complaints details here </h2>
+        <!--<p>(Note:- If you solve any complaint of your complaint records then please sovled complaint id submitted)</p> -->
+        </form>
+    
+    <table>
+      <tr>
+        <th>USER COMPLAINT ID</th>  
+        <th>USER NAME</th> 
+        <th>USER COMPLAINT</th>
+        <th>USER LOCATION</th>
+        <th>USER CONTACT</th>
+        <th>USER EMAIL</th>
+        <th>USER COMPLAINT STATUS</th>
+        
+        
+        
+      </tr>
+      {% for i in comp %}
+      <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.user}}</td>
+        <td>{{i.user_complaint}}</td>
+        <td>{{i.user_location}}</td>
+        <td>{{i.user_Mobile_number}}</td>
+        <td>{{i.user_Mobile_number}}</td>
+        <td>INPROGRESS</td>
+
+        
+    
+        
+        
+      </tr>
+      {% endfor %}
+    </table>
+    <h2> So,{{user}} you see  your complaint records . Please solve complaints immediately and if any problem occur then please contact to adminside (admin123@gmail.com)</h2>
+    <h3 style="margin-left:1000px;">-Thank you</h3>
+    <a href="/profile111/"><class="button" style="margin-left:420px;margin-bottom:-250px; background-color:red; width: 30%; border-radius: 12px;">UPDATE STATUS</a>
+    
+
+</div>
+    </body>
+    </html>

@@ -1,0 +1,59 @@
+<html>
+        <head>
+        <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        </style>
+        </head>
+        <body>
+            <form action="/profile444/"method="post">{% csrf_token %}
+                    
+            
+            <h2>Hello {{user}} your Garbage completed complaints status here </h2>
+            <p>(Note:- This status record is final record )</p> 
+            </form>
+        
+        <table>
+          <tr>
+            <th>USER COMPLAINT ID</th>  
+            <th>USER NAME</th> 
+            <th>USER COMPLAINT</th>
+            <th>USER CONTACT</th>
+            <th>USER LOCATION</th>
+            <th>USER COMPLAINT STATUS</th>
+            
+          </tr>
+          {% for i in dt %}
+          <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.user}}</td>
+            <td>{{i.user_complaint}}</td>
+            <td>{{i.user_Mobile_number}}</td>
+            <td>{{i.user_location}}</td>
+            <td>COMPLETED</td>
+            
+        
+            
+            
+          </tr>
+          {% endfor %}
+        </table>
+        <h2> So,{{user}} you see  your complaint  records . If any problem of given record then please contact to adminside (admin123@gmail.com)</h2>
+        <h3>-Thank you</h3>
+    
+        
+        </body>
+        </html>

@@ -1,0 +1,107 @@
+<html>
+    <head>
+    <style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+    button {
+            background-color:orange;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 10%;
+            border-radius: 12px;
+        }
+        signupbtn {
+            float: left;
+            width: 50%;
+        }
+
+        /* Add padding to container elements */
+        .container {
+            padding: 16px;
+        }
+
+        /* Clear floats */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Change styles for cancel button and signup button on extra small screens */
+        @media screen and (max-width: 300px) {
+            .signupbtn {
+                width: 100%;
+            }
+        }
+        a:link, a:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a:hover, a:active {
+    background-color: red;
+}
+    </style>
+    </head>
+    <body>
+        <form action="/profile111/">{% csrf_token %}
+                
+        
+        <h2>Hello {{user}} your complete complaints details here </h2>
+        <p>(Note:- This all complaint solved for you.Good Work )</p> 
+
+        </form>
+        <a href="/status/" style= "class=button;border-radius: 15px; margin-left:1150px;">BACK</a>
+        
+    <table>
+      <tr>
+        <th>USER COMPLAINT ID</th>  
+        <th>USER NAME</th> 
+        <th>USER COMPLAINT</th>
+        <th>USER CONTACT</th>
+        <th>USER LOCATION</th>
+        <th>USER COMPLAINT STATUS</th>
+        
+      </tr>
+      {% for i in comp %}
+      <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.user}}</td>
+        <td>{{i.user_complaint}}</td>
+        <td>{{i.user_Mobile_number}}</td>
+        <td>{{i.user_location}}</td>
+        <td>COMPLETED</td>
+        
+    
+        
+        
+      </tr>
+      {% endfor %}
+    </table>
+    <h2> So,{{user}} you see  your complaint records . If you have any problem then contact adminside(admin123@gmail.com)</h2>
+    <h3>-Thank you</h3>
+
+    
+    </body>
+    </html>

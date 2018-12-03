@@ -1,0 +1,52 @@
+<html>
+    <head>
+    <style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    
+    td, th {
+        border: 1px solid #F0E68C;
+        text-align: left;
+        padding: 8px;
+        border-radius: 20px;
+    }
+    
+    tr:nth-child(even) {
+        background-color:rgb(144, 198, 199);
+    }
+    tr:nth-child(odd) {
+        background-color:rgb(165, 146, 172);
+    }
+        background-color: #dddddd;
+    }
+    </style>
+    </head>
+    <body>
+        <h2>Hello {{user}} Congradulations!!! </h2>
+        <p>Your complaint has been Received.And please check your complaint details:-</p> 
+
+    
+    <table>
+      <tr>
+        <th>WORKER NAME</th>
+        <th>WORKER CONTACT</th>
+        <th>YOUR LOCATION</th>
+        <th>YOUR COMPLAINT</th>
+      </tr>
+      <tr>
+        <td>{{worker}}</td>
+        <td>{{contact}}</td>
+        <td>{{location}}</td>
+        <td>{{comp}}</td>
+      </tr>
+    </table>
+    <h2> So,{{user}} your complaint  assign to Mr. {{worker}}. Please contact to {{worker}}</h2>
+    <h3>-Thank you</h3>
+
+    
+    </body>
+    </html>

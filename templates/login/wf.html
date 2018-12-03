@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        center{
+                margin: auto;
+                width: 50%;
+                padding:10px;
+        }
+                 
+        /* Full-width input fields */
+        input[type=text], input[type=password], input[type=email], input[type=number] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color:orange;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 5%;
+            border-radius: 5px;
+        }
+
+        /* Float cancel and signup buttons and add an equal width */
+        .signupbtn {
+            float: left;
+            width: 50%;
+        }
+
+        /* Add padding to container elements */
+        .container {
+            padding: 16px;
+        }
+
+        /* Clear floats */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Change styles for cancel button and signup button on extra small screens */
+        @media screen and (max-width: 300px) {
+            .signupbtn {
+                width: 100%;
+            }
+        }
+        a:link, a:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a:hover, a:active {
+    background-color: red;
+}
+
+    </style><body style="background-color:rgba(255, 0, 0, 0.3);"></body>
+</head>
+<body>
+    <center>
+{{ username }}
+{{ msg }}       
+
+<h1>STATUS </h1>
+
+<form action="/wifi/">{% csrf_token %}
+    
+
+   
+    <h1>Which type your complaint</h1>
+    <a href="/profile444/" style= "class=button;border-radius: 10px;">COMPLETED STATUS</a>
+    <a href="/profile555/" style= "class=button;border-radius: 10px;">INPROGRESS STATUS</a>
+    <a href="/profile555/" style= "class=button;border-radius: 10px;">PAINDDING STATUS</a>
+    <a href="/status/" style= "class=button;border-radius: 25px;">BACK</a>
+    <!--<a href="/profile/" style= "class=button;border-radius: 15px;">EXIT</a>-->
+    
+<h2><a href="/home/" style= "class=button;border-radius: 30px; background-color: orange;">Logout</a> </h2>
+   
+</form></center>
+
+</body>
+</html>

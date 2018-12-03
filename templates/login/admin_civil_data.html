@@ -1,0 +1,13 @@
+{% if data %}
+{% for i in data %}
+User:->{{i.user}}<br>
+     User Complaint:-> {{i.user_complaint}}<br>
+     User Location:->  {{i.user_location}}<br>
+     User Contact:->  {{i.user_Mobile_number}}<br>
+     Worker Name:->  {{i.worker_name}}<br>
+     Worker Contact:->{{i.worker_Mobile_number}}<br>
+
+     Date And :->  {{i.pub_date}}<br>
+     <hr>
+{% endfor %}
+{% endif %}

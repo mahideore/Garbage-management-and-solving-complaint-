@@ -1,0 +1,64 @@
+<!Doctype html>
+{% load staticfiles %}
+<html>
+<style>
+.btn-group button {
+background-color:orangered; /* Green background */
+border: 1px solid green; /* Green border */
+color: white; /* White text */
+padding: 10px 10px; /* Some padding */
+cursor: pointer; /* Pointer/hand icon */
+width: 15%; /* Set a width if needed */
+display:block;
+height:40px;
+text-align:center;
+margin-top:50px;
+margin-left:900px;
+border-radius: 8px 8px 8px;
+}
+
+.btn-group button:not(:last-child) {
+	    border-bottom: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+	    background-color: red;
+}
+d {
+position: relative;
+top: 140px;
+right:-770px;
+
+}
+b {
+position: relative;
+top: 280px;
+right:620px;
+
+}
+c {
+position: relative;
+top: 410px;
+right:470px;
+
+}
+</style>
+ <body background="/static/images/b1.jpg">
+<!--<body style="background-color:chartreuse">-->
+
+
+	<h1>GARBAGE MANAGEMENT 
+	</h1>
+	<!--<d><img src="{% static 'images/bbb.png' %}"/  width="150px" height="100px"></d>
+	<b><img src="{% static 'images/sn.png' %}"/  width="150px" height="100px"></b>
+	<c><img src="{% static 'images/ex.png' %}"/  width="150px" height="100px"></c>-->
+	<div class="btn-group">
+	<a href="/login/"><button> LOGIN </button></a>
+	<a href="/register/"><button> SIGNUP </button></a>
+	<a href="/app/"><button> EXIT </button></a>
+        
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+{% load staticfiles %}
+
+<html>
+<head>
+<title>Page Title</title>
+   <link rel="stylesheet" href="{% static "/css/materialize.css" %}">
+    <link rel="stylesheet" href="{% static "/css/materialize.min.css" %}">
+
+
+  <script src= "{% static "/js/materialize.js" %}"></script>
+    <script src= "{% static "/js/materialize.min.js" %}"></script> 
+     <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map_wrapper {
+    height: 530px;
+}
+
+#map_canvas {
+    width: 100%;
+    height: 100%;
+}
+    </style>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmrEiwFRhjX5UNe03odV-MGa8NWy3KSZg&c0allback=initMap"
+    async defer></script>
+          
+</head>
+<body onload="initialize()">
+<nav>
+    
+    <div class="nav-wrapper">
+      <h1 style="margin-left:550px;">Locations</h1>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+       
+        <li><a href="/profile/">Add Complaint</a></li>
+      </ul>
+    </div>
+  </nav>
+ <!-- <div class="row">
+        <div class="col s12 m12">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                     -->
+        <div id="map_wrapper">
+            <div id="map_canvas" class="mapping"></div>
+        </div>
+                    <!-- </div>
+           
+          </div>
+        </div>
+      </div> -->
+    <script type="text/javascript">
+ 
+      jQuery(function($) {
+    // Asynchronously Load the map API 
+    
+    var script = document.createElement('script');
+    script.src = "//maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
+    document.body.appendChild(script);
+});
+function initialize() {
+    // var django_data =  }};
+alert("hello");
+    
+    var map;
+    var bounds = new google.maps.LatLngBounds();
+    var mapOptions = {
+        mapTypeId: 'roadmap'
+    };
+                    
+    // Display a map on the page
+    map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+    map.setTilt(45);
+        
+    // Multiple Markers
+    var markers = {{ test|safe }};
+    
+                        
+    // Info Window Content
+    var infoWindowContent = {{ listt|safe }};
+        
+    // Display multiple markers on a map
+    var infoWindow = new google.maps.InfoWindow(), marker, i;
+    
+    // Loop through our array of markers & place each one on the map  
+    for( i = 0; i < markers.length; i++ ) {
+        var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+        bounds.extend(position);
+        marker = new google.maps.Marker({
+            position: position,
+            map: map,
+            title: markers[i][0]
+        });
+        
+        // Allow each marker to have an info window    
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                infoWindow.setContent(infoWindowContent[i][0],infoWindowContent[i][1],infoWindowContent[i][2],);
+                infoWindow.open(map, marker);
+            }
+        })(marker, i));
+
+        // Automatically center the map fitting all markers on the screen
+        map.fitBounds(bounds);
+    }
+
+    // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
+    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+        this.setZoom(10);
+        google.maps.event.removeListener(boundsListener);
+    });
+}    
+
+    </script> 
+
+
+
+</body>
+</html> 

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>DATA</title>
+<body>
+<h1> hiiii </h1>
+{% for Users in data %}
+  {% for k in dt %}
+   name: <b>{{ k.user }}&nbsp;&nbsp;&nbsp;&nbsp; 
+   Location: {{ k.location}}&nbsp;&nbsp;&nbsp;&nbsp;
+   contact: {{ Users.mobile_number}}<br>
+  {%endfor%}
+ worker name: <b>{{ Users.first_name  }}</b>&nbsp;&nbsp;&nbsp;&nbsp; 
+  {{ Users.last_name}}<br>
+ 
+{%endfor%}
+
+
+
+</body>
+</head>
+</html>

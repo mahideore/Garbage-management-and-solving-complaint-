@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        center{
+                margin: auto;
+                width: 50%;
+                
+                padding:10px;
+        }
+        /* Full-width input fields */
+        input[type=text], input[type=password], input[type=email], input[type=number] {
+            width: 40%;
+            padding: 10px 12px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color:orange;
+            color: white;
+            padding: 10px 5px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 10%;
+        }
+
+        /* Float cancel and signup buttons and add an equal width */
+        .signupbtn {
+            float: left;
+            width: 10%;
+        }
+
+        /* Add padding to container elements */
+        .container {
+            padding: 16px;
+        }
+
+        /* Clear floats */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Change styles for cancel button and signup button on extra small screens */
+        @media screen and (max-width: 300px) {
+            .signupbtn {
+                width: 10%;
+            }
+        }
+    </style><body style="background-color:rgba(255, 0, 0, 0.3);"></body>
+</head>
+<body>
+    <center>
+
+<h1>Garbage WORKER</h1>
+
+{{ msg }}
+<form action="/civilworker/" method="post">{% csrf_token %}
+    
+    <br><label><b>FIRST NAME</b></label></br>
+    <input type="text" name="first_name" placeholder="Enter your name here">
+    <br><label><b>MIDDLE NAME</b></label></br>
+    <input type="text" name="middle_name" placeholder="Enter your first_name here">
+    <br><label><b>LAST NAME</b></label></br>
+    <input type="text" name="last_name" placeholder="Enter your last_name here">
+    <br><label><b>EMAIL</b></label></br>
+    <input type="text" name="email" placeholder="Enter your email here">
+    <br><label><b>CONTACT</b></label></br>
+    <div>
+        <input type="text" id = "mob" name="mobile_number" placeholder="Contact"onblur="checkMob(this)" minlength = "10"onkeypress="return isNumberKey(event)"maxlength="10">
+        <div style="color:#F00;"><div id="invmob"></div> </div>
+        </div>
+    
+    <!-- <input type="text" name="pub_date" > -->
+    <br><br>
+    <input class="waves-effect waves-light btn" type="submit" value="Submit">
+   <!-- <h2><a href="/wifilocations/"style= "class=button;border-radius: 30px; background-color: orange;">location</a> </h2>
+    <a href="/profile/" style= "class=button;border-radius: 15px;">Back</a>-->
+    
+</form></center>
+<!-- {{ profile }} -->
+<button  type="submit" class="signupbtn" style="margin-left:860px; margin-top:-370px;"><a href="/profile/"> BACK </a></button>
+<button type="submit" class="signupbtn" style="margin-left:1000px;margin-top:-370px;"><a href="/home/"> HOME </a></button>
+<button type="submit" class="signupbtn" style="margin-left:1140px;margin-top:-370px;"><a href="/app/"> EXIT </a></button>
+<script>
+    function isNumberKey(evt){
+        var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+                
+            return true;
+        }
+    function checkMob(evt)
+    {
+       var ele = evt.value;
+       if(ele == "")
+       {
+        document.getElementById('invmob').innerHTML = "mobile is required";
+				document.getElementById('mob').focus();
+				return false;
+       }
+       else if(ele[0] < 7)
+       {
+        document.getElementById('invmob').innerHTML = "pls enter valid mob";
+				document.getElementById('mob').focus();
+				return false;
+       }
+       else{
+        document.getElementById('invmob').innerHTML = "";
+       }
+    }
+</script>
+</body>
+</html>

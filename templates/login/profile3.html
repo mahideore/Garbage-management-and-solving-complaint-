@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        center{
+                margin: auto;
+                width: 50%;
+                
+                padding:10px;
+        }
+        bb {
+            background-color:blue;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            
+        }      
+        /* Full-width input fields */
+        input[type=text], input[type=password], input[type=email], input[type=number] {
+            width: 40%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 3px solid rgb(145, 227, 241);
+            box-sizing: border-box;
+            border-radius: 25px;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color:orange;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 100;
+            border: none;
+            cursor: pointer;
+            width: 10%;
+            border-radius: 12px;
+        }
+       
+        /* Float cancel and signup buttons and add an equal width */
+        .signupbtn {
+            float: left;
+            
+        }
+
+        /* Add padding to container elements */
+        .container {
+            padding: 20px;
+        }
+
+        /* Clear floats */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Change styles for cancel button and signup button on extra small screens */
+        @media screen and (max-width: 300px) {
+            .signupbtn {
+                width: 5%;
+            }
+        }
+        .button1 {
+    background-color: orange; 
+    color: black; 
+    border: 2px solid #4CAF50;
+}
+
+.button1:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+.button2 {
+    background-color:rgba(0, 217, 255, 0.685); 
+    color: black; 
+    border: 2px solid #4CAF50;
+}
+
+.button2:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+    </style><body style="background-color:#F0E68C;"></body>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
+    
+</head>
+<body ><center>
+        
+<h1>COMPLAINTS</h1>
+
+{{ msg }}
+<form action="/profile3/" method="post"  onsubmit="return check_info();">{% csrf_token %}
+    
+    <br><label><b>Complaint</b></label></br>
+    <input type="text" name="complaint" placeholder="Enter your electric complaint here">
+    <br><label><b>Location</b></label></br>
+    <input type="text" name="location" id="location" placeholder="your location/Address" > 
+    <br><label><b>Build_No/Flat_No/Rm_No/Names</b></label></br>
+    <input type="text" name="bulding_name" placeholder="Enter your Building name " id="b_name" > 
+    <br><label><b>Area/Landmark</b></label></br>
+    <input type="text" name="room_number" placeholder="Enter your room/flat number" id="a_name" >
+    <br><label><b>Contact</b></label></br>
+    <div>
+    <input type="text" id = "mob" name="mobile_number" placeholder="Contact"onblur="checkMob(this)" minlength = "10"onkeypress="return isNumberKey(event)"maxlength="10">
+    <div style="color:#F00;"><div id="invmob"></div> </div>
+    </div>
+    <br><br>
+    <input class="waves-effect waves-light btn" type="submit" value="Submit">
+    <!--<a href="/profile/" style= "class=button;border-radius: 15px;">Back</a>-->
+</form></center>
+<a href="/profile/"><button  type="submit" class="signupbtn button1" style="margin-left:880px;margin-top:-530px;"> BACK </button></a>>
+<a href="/app/"><button type="submit" class="signupbtn button1" style="margin-left:1160px;margin-top:-550px;">EXIT</button></a>
+<a href="/home/"><button type="submit" class="signupbtn button1" style="margin-left:1020px;margin-top:-550px;"> HOME </button></a>
+<button type="submit" class="signupbtn button2" style="margin-left:780px;margin-top:-370px;"onClick="getLocation()"> LOCATION </button>
+
+
+</div>
+
+
+<script>
+
+
+
+
+  var loc;
+  var geocoder = new google.maps.Geocoder();
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+} 
+
+var getLocation = function(){
+    //alert(loc);
+    document.getElementById("location").value=loc;
+}
+//Get the latitude and the longitude;
+function successFunction(position) {
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    codeLatLng(lat, lng)
+}
+
+function errorFunction(){
+    alert("Geocoder failed");
+}
+
+  
+
+  function codeLatLng(lat, lng) {
+
+    var latlng = new google.maps.LatLng(lat, lng);
+     geocoder.geocode({'latLng': latlng}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+      console.log(results)
+        if (results[1]) {
+         //formatted address
+         loc =results[0].formatted_address;
+         
+        } else {
+          alert("No results found");
+        }
+      } else {
+        alert("Geocoder failed due to: " + status);
+      }
+    });
+  }
+
+
+
+
+
+    function isNumberKey(evt){
+        var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+                
+            return true;
+        }
+    function checkMob(evt)
+    {
+       var ele = evt.value;
+       if(ele == "")
+       {
+        document.getElementById('invmob').innerHTML = "mobile is required";
+				document.getElementById('mob').focus();
+				return false;
+       }
+       else if(ele[0] < 7)
+       {
+        document.getElementById('invmob').innerHTML = "pls enter valid mob";
+				document.getElementById('mob').focus();
+				return false;
+       }
+       else{
+        document.getElementById('invmob').innerHTML = "";
+       }
+    }
+    function check_info(){
+        var b_name=document.getElementById('b_name').value;
+        var a_name=document.getElementById('a_name').value;
+            if(b_name=="" || a_name==""){
+                alert('please fill in address');
+                return false;
+            } 
+            else{
+                return true
+            }
+
+    }
+</script>
+</body>
+</html>

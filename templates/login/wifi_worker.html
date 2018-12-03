@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        center{
+                margin: auto;
+                width: 50%;
+                padding:10px;
+        }
+                 
+        /* Full-width input fields */
+        input[type=text], input[type=password], input[type=email], input[type=number] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color:orange;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 10%;
+            border-radius: 12px;
+        }
+
+        /* Float cancel and signup buttons and add an equal width */
+        .signupbtn {
+            float: left;
+            width: 50%;
+        }
+
+        /* Add padding to container elements */
+        .container {
+            padding: 16px;
+        }
+
+        /* Clear floats */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Change styles for cancel button and signup button on extra small screens */
+        @media screen and (max-width: 300px) {
+            .signupbtn {
+                width: 100%;
+            }
+        }
+        a:link, a:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a:hover, a:active {
+    background-color: red;
+}
+
+    </style><body style="background-color:rgba(255, 0, 0, 0.3);"></body>
+</head>
+<body>
+    <center>
+{{ username }}
+{{ msg }}       
+
+<h1>Drainage Water Section</h1>
+
+<form action="/wff/" method="post">{% csrf_token %}
+    
+
+   <!-- <input type="text" name="complaint" placeholder="Enter your complain here">
+    <input type="text" name="location" placeholder="your location/Address" >
+    <input type="text" name="mobile_number" placeholder="Contact">-->
+    <h1>Which type your  information about complaint:-</h1>
+    <a href="/profile111/" style= "class=button;border-radius: 15px;">COMPLED COMLAINTS</a>
+    <a href="/profile222/" style= "class=button;border-radius: 15px;">INPROGRESS COMPLAINTS</a>
+    <a href="/wff/" style= "class=button;border-radius: 15px;">BACK</a>
+    
+    
+    
+    
+    
+    
+    <!-- <input type="text" name="pub_date" > -->
+    <br><br>
+   <!-- <input class="waves-effect waves-light btn" type="submit" value="Submit">-->
+    
+   <h2><a href="/home/" style= "class=button;border-radius: 30px; background-color: orange;">Logout</a> </h2>
+   
+</form></center>
+<!-- {{ profile }} -->
+</body>
+</html>

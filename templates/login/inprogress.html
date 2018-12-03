@@ -1,0 +1,17 @@
+<h3 style="margin-left:1100px;"><label><b>COMPLAINT ID</b></label><br></h3>
+<input type="text" name="complaint" placeholder="Enter your wifi complaint id here" style="margin-left:1000px;" size="30%"><br>
+<input class="waves-effect waves-light btn" type="submit" value="COMPLETE" style="margin-left:1100px;"><br>
+{% for i in comp %}
+     Complaint ID:->{{i.id}}<br>
+     User Complaint:-> {{i.user_complaint}}<br>
+     User Location:->  {{i.user_location}}<br>
+     User Contact:->  {{i.user_Mobile_number}}<br>
+     User Status:->{{i.status}}<br>
+     <input class="waves-effect waves-light btn" type="submit" value="COMPLETE" style="margin-left:1100px;"><br>
+     
+
+     
+     <hr>
+{% endfor %}
+
+

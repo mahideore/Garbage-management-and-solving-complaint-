@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /* Full-width input fields */
+        input[type=text], input[type=password], input[type=email], input[type=number] {
+            width: 40%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Float cancel and signup buttons and add an equal width */
+        .signupbtn {
+            float: left;
+            width: 50%;
+        }
+
+        /* Add padding to container elements */
+        .container {
+            padding: 16px;
+        }
+
+        /* Clear floats */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Change styles for cancel button and signup button on extra small screens */
+        @media screen and (max-width: 300px) {
+            .signupbtn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    {{ data }}
+
+<h1>MACHANICAL</h1>
+<h2><a href="{% url 'login:logout' %}">Logout</a> </h2>
+{{ msg }}
+<form action="/profile4/" method="post">{% csrf_token %}
+    
+    <br><label><b>Complaint</b></label></br>
+    <input type="text" name="complaint" placeholder="Enter your machanical complaint here">
+    <br><label><b>Location</b></label></br>
+    <input type="text" name="location" placeholder="your location/Address" >
+    <br><label><b>Building Name</b></label></br>
+    <input type="text" name="bulding_name" placeholder="Enter your Building name " > 
+    <br><label><b>Room/Flat Number</b></label></br>
+    <input type="text" name="room_number" placeholder="Enter your room/flat number" >
+    <br><label><b>Contact</b></label></br>
+    <div>
+        <input type="text" id = "mob" name="mobile_number" placeholder="Contact"onblur="checkMob(this)" minlength = "10"onkeypress="return isNumberKey(event)"maxlength="10">
+        <div style="color:#F00;"><div id="invmob"></div> </div>
+        </div>
+    <input type="text" name="mobile_number" placeholder="Contact">
+    <!-- <input type="text" name="pub_date" > -->
+    <br><br>
+    <input class="waves-effect waves-light btn" type="submit" value="Submit">
+    
+</form>
+<!-- {{ profile }} -->
+</body>
+</html>

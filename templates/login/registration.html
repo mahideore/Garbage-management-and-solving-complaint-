@@ -1,0 +1,115 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+ <title>Registration Page</title>
+<style>
+    center{
+                margin: auto;
+                
+            
+                padding:4px;
+        }
+    /* Full-width input fields */
+input[type=text], input[type=password], input[type=email] {
+    width: 40%;
+    padding: 10px 10px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color:darkkhaki;
+    color:black;
+    padding: 5px 12px;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    padding: 14px 20px;
+    background-color:black;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.signupbtn {
+    float: left;
+    width: 10%;
+}
+
+/* Add padding to container elements */
+.container {
+    padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+        width: 10%;
+    }
+}
+</style>
+<body style="background-color:coral;"></body>
+</head>
+<body><center>
+        <!-- <img src="{% static 'images/test_image.gif' %}"> -->
+<h1>{{ title }}</h1>
+<!--<a href="/app/">Home</a><br>
+
+<a href="/login/">Login</a>
+Click here if you are already registered »-->
+{{ username }}
+{{ msg }}
+<form action="" method="POST" name="form">{% csrf_token %}
+  <div class="container">
+    <label><b>Username</b></label>
+    <br><input type="text" placeholder="Enter username" name="username"></br>
+    <label><b>First name</b></label>
+    <br><input type="text" placeholder="Enter First name" name="first_name"></br>
+    <label><b>Last Name</b></label>
+    <br><input type="text" placeholder="Enter Last name" name="last_name"></br>
+    <label><b>Email</b></label>
+    <br><input type="email" placeholder="Enter Email" name="email"></br>
+    <label><b>Confirm Email</b></label>
+    <br><input type="email" placeholder="confirm email" name="email2"></br>
+    <label><b>Password</b></label>
+    <br><input type="password" placeholder="Password" name="password" minlength = "8"></br>
+
+    <div class="clearfix">
+
+      <button type="submit" class="signupbtn" onclick="checkemail();" style="margin-left:560px";>{{ title }}</button>
+      <button type="submit" class="signupbtn" style="margin-left:175px; margin-top:-480px;"><a href="/login/"> LOGIN</button>
+      <!--<button type="submit" class="cancle" style="margin-left:180px; margin-top:-480px;"><a href="/home/"> BACK</button>
+      --><button type="submit" class="signupbtn" style="margin-left:1140px; margin-top:-505px;"><a href="/app/"> EXIT</button>
+      </center>
+    </div>
+  </div>
+</form>
+
+<script>
+    function checkemail()
+    {
+        if (form.email.value !== form.email2.value)
+        {
+            alert("Sorry email does not match");
+            return false;
+        }
+    return true;
+    }
+</script>
+</body>
+</html>
